@@ -41,16 +41,16 @@ def contact():
        entry = Contact(Name= name, Email=email, Number=number, Subject=subject, Message=message, Date=datetime.now()  )
        db.session.add(entry)
        db.session.commit()
+       flash('Your form is successfully submitted. We will contact you soon..')
        mail.send_message('New message', 
                            sender= email, 
                            recipients = ['mayank.nitt.00@gmail.com'],
                            body = "Name: " + name + "\n" 
-                        + "Email: " + email + "\n" 
-                        + "Mobile Number: " + number + "\n" 
-                         +  "Subject: " + subject + "\n" 
-                          + "Message/Query: " + message)
-       flash('Your form is successfully submitted. We will contact you soon..')
-    '''return redirect(url_for('contact'))'''
+                           + "Email: " + email + "\n" 
+                           + "Mobile Number: " + number + "\n" 
+                           +  "Subject: " + subject + "\n" 
+                           + "Message/Query: " + message)
+       
     return render_template('contact.html')
     
     
